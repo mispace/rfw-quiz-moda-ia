@@ -230,10 +230,12 @@ const Quiz = {
       card.dataset.label = option.label;
 
       const imgSrc = `assets/images/${stepData.key}/${option.id}.jpg`;
+      const imgTopIds = ['mulher-alienigena'];
+      const imgClass = 'option-image' + (imgTopIds.includes(option.id) ? ' img-top' : '');
 
       card.innerHTML = `
         <div class="option-placeholder">${option.emoji}</div>
-        <img class="option-image" src="${imgSrc}" alt="${option.label}" loading="lazy"
+        <img class="${imgClass}" src="${imgSrc}" alt="${option.label}" loading="lazy"
              onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';"
              onload="this.previousElementSibling.style.display='none';">
         <div class="option-label">${option.label}</div>
