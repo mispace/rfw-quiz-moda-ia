@@ -1,0 +1,22 @@
+{
+  "name": "Crie Moda com IA em 4 Cliques",
+  "short_name": "RFW Quiz IA",
+  "description": "Quiz interativo para criar prompts de moda com IA - Rio Fashion Week 2026",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1C2333",
+  "theme_color": "#1C2333",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/logos/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logos/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

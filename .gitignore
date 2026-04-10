@@ -1,0 +1,27 @@
+# Variáveis de ambiente locais
+.env
+.env.local
+
+# config.js contém apenas URL pública (sem segredos) — seguro commitar
+# Descomente abaixo SOMENTE se quiser excluir do git:
+# config.js
+
+# Node modules
+node_modules/
+
+# Build
+dist/
+build/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Arquivos fonte / originais (nao publicar)
+stitch/
+Imagens Quiz/

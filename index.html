@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Quiz interativo: Crie Moda com IA em 4 Cliques - Rio Fashion Week 2026 - SENAC RJ">
+  <meta name="theme-color" content="#6448b2">
+  <title>Crie Moda com IA em 4 Cliques | RFW 2026</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            headline: ['Epilogue', 'sans-serif'],
+            body: ['Manrope', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#6448b2',
+              light: '#8b6fdf',
+              dark: '#4a3490',
+              container: '#ede7ff',
+            },
+            secondary: {
+              DEFAULT: '#005da7',
+              light: '#3d8fd4',
+              container: '#d6e8ff',
+            },
+            tertiary: {
+              DEFAULT: '#a02d70',
+              light: '#d0609e',
+              container: '#ffd8ec',
+            },
+            surface: {
+              DEFAULT: '#f6f6fb',
+              dim: '#ededf4',
+              bright: '#ffffff',
+              container: {
+                DEFAULT: '#f0eef7',
+                low: '#f6f4fc',
+                high: '#eae7f2',
+                highest: '#e4e1ec',
+              },
+            },
+            'on-surface': {
+              DEFAULT: '#2d2f33',
+              variant: '#49454f',
+            },
+            outline: {
+              DEFAULT: '#79747e',
+              variant: '#cac4d0',
+            },
+          },
+          boxShadow: {
+            glass: '0 8px 32px rgba(167,139,250,0.12)',
+            'glass-lg': '0 16px 48px rgba(167,139,250,0.18)',
+            'glass-sm': '0 4px 16px rgba(167,139,250,0.08)',
+            iridescent: '0 8px 32px rgba(100,72,178,0.2), 0 0 0 1px rgba(100,72,178,0.05)',
+          },
+          backgroundImage: {
+            'gradient-iridescent': 'linear-gradient(135deg, #6448b2 0%, #a02d70 50%, #005da7 100%)',
+            'gradient-subtle': 'linear-gradient(135deg, rgba(100,72,178,0.08) 0%, rgba(160,45,112,0.06) 50%, rgba(0,93,167,0.08) 100%)',
+            'gradient-glass': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)',
+          },
+          keyframes: {
+            'fabric-pulse': {
+              '0%, 100%': { transform: 'scale(1)', opacity: '0.7' },
+              '50%': { transform: 'scale(1.05)', opacity: '1' },
+            },
+            'scan-line': {
+              '0%': { top: '0%' },
+              '100%': { top: '100%' },
+            },
+            'orbit': {
+              '0%': { transform: 'rotate(0deg) translateX(120px) rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg) translateX(120px) rotate(-360deg)' },
+            },
+            'orbit-reverse': {
+              '0%': { transform: 'rotate(0deg) translateX(90px) rotate(0deg)' },
+              '100%': { transform: 'rotate(-360deg) translateX(90px) rotate(360deg)' },
+            },
+            'breathe': {
+              '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
+              '50%': { transform: 'scale(1.2)', opacity: '1' },
+            },
+            'float-up': {
+              '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+              '10%': { opacity: '0.4' },
+              '90%': { opacity: '0.1' },
+              '100%': { transform: 'translateY(-20vh) scale(1)', opacity: '0' },
+            },
+            'fade-in-up': {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            'shimmer': {
+              '0%': { backgroundPosition: '-200% center' },
+              '100%': { backgroundPosition: '200% center' },
+            },
+            'pulse-ring': {
+              '0%': { transform: 'scale(0.8)', opacity: '0.8' },
+              '50%': { transform: 'scale(1.1)', opacity: '0.3' },
+              '100%': { transform: 'scale(0.8)', opacity: '0.8' },
+            },
+            'dress-glow': {
+              '0%, 100%': { filter: 'drop-shadow(0 0 8px rgba(100,72,178,0.3))' },
+              '50%': { filter: 'drop-shadow(0 0 24px rgba(160,45,112,0.6))' },
+            },
+          },
+          animation: {
+            'fabric-pulse': 'fabric-pulse 3s ease-in-out infinite',
+            'scan-line': 'scan-line 2.5s linear infinite',
+            'orbit': 'orbit 8s linear infinite',
+            'orbit-reverse': 'orbit-reverse 6s linear infinite',
+            'breathe': 'breathe 4s ease-in-out infinite',
+            'float-up': 'float-up 6s ease-out forwards',
+            'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+            'shimmer': 'shimmer 3s linear infinite',
+            'pulse-ring': 'pulse-ring 3s ease-in-out infinite',
+            'dress-glow': 'dress-glow 3s ease-in-out infinite',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg">
+
+  <style>
+    /* ---- Base ---- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', sans-serif;
+      background: #f6f6fb;
+      color: #2d2f33;
+      overflow: hidden;
+      height: 100dvh;
+      -webkit-font-smoothing: antialiased;
+    }
+    #app {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    /* ---- Screen System ---- */
+    .screen {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(40px);
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0s 0.5s;
+      will-change: opacity, transform;
+    }
+    .screen.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0s 0s;
+      z-index: 10;
+    }
+    .screen.slide-left {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-40px);
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0s 0.5s;
+      z-index: 5;
+    }
+
+    /* ---- Option Cards (JS-created) ---- */
+    .option-card {
+      position: relative;
+      cursor: pointer;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid transparent;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+    }
+    .option-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 32px rgba(100,72,178,0.15);
+    }
+    .option-card:focus-visible {
+      box-shadow: 0 0 0 3px rgba(100,72,178,0.4);
+    }
+    .option-card.selected {
+      border-color: #6448b2;
+      transform: scale(1.02);
+      box-shadow: 0 8px 32px rgba(100,72,178,0.25);
+    }
+    .option-card.selected .check-overlay {
+      opacity: 1;
+    }
+
+    .option-placeholder {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: linear-gradient(135deg, rgba(100,72,178,0.06) 0%, rgba(160,45,112,0.04) 50%, rgba(0,93,167,0.06) 100%);
+    }
+    .option-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 2.2rem);
+      object-fit: cover;
+    }
+    .option-label {
+      position: relative;
+      z-index: 2;
+      padding: 0.3rem 0.5rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.03em;
+      color: #2d2f33;
+      background: rgba(255,255,255,0.9);
+      min-height: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+
+    .check-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(100,72,178,0.2);
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .check-icon {
+      width: 48px;
+      height: 48px;
+      background: #6448b2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(100,72,178,0.4);
+    }
+    .check-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    /* ---- Loading Particles ---- */
+    .particle {
+      position: absolute;
+      width: 3px;
+      border-radius: 2px;
+      background: linear-gradient(to top, rgba(100,72,178,0.6), rgba(160,45,112,0.3));
+      animation: float-up 6s ease-out infinite;
+    }
+
+    /* ---- Scan Line ---- */
+    .scan-line {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(100,72,178,0.5), rgba(160,45,112,0.5), transparent);
+      animation: scan-line 2.5s linear infinite;
+      pointer-events: none;
+    }
+
+    /* ---- Input Error State ---- */
+    input.error {
+      border-color: #b3261e !important;
+      box-shadow: 0 0 0 2px rgba(179,38,30,0.15) !important;
+    }
+    input.error::placeholder {
+      color: #b3261e;
+    }
+
+    /* ---- Material Symbols ---- */
+    .material-symbols-rounded {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* ---- Scrollbar ---- */
+    .screen::-webkit-scrollbar { width: 4px; }
+    .screen::-webkit-scrollbar-track { background: transparent; }
+    .screen::-webkit-scrollbar-thumb { background: rgba(100,72,178,0.2); border-radius: 2px; }
+
+    /* ---- Holographic dress SVG animation ---- */
+    .dress-svg-wrapper {
+      filter: drop-shadow(0 0 12px rgba(100,72,178,0.3));
+      animation: dress-glow 3s ease-in-out infinite;
+    }
+
+    /* ---- Iridescent shimmer text ---- */
+    .text-shimmer {
+      background: linear-gradient(90deg, #6448b2, #a02d70, #005da7, #6448b2);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* ---- Welcome decorative blobs ---- */
+    .blob-1 {
+      background: radial-gradient(ellipse at center, rgba(100,72,178,0.15) 0%, transparent 70%);
+      animation: breathe 6s ease-in-out infinite;
+    }
+    .blob-2 {
+      background: radial-gradient(ellipse at center, rgba(160,45,112,0.1) 0%, transparent 70%);
+      animation: breathe 8s ease-in-out infinite 1s;
+    }
+    .blob-3 {
+      background: radial-gradient(ellipse at center, rgba(0,93,167,0.1) 0%, transparent 70%);
+      animation: breathe 7s ease-in-out infinite 2s;
+    }
+
+    /* ---- Orbit particles on loading ---- */
+    .orbit-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      margin: -4px 0 0 -4px;
+    }
+
+    /* ---- Copy button states ---- */
+    #btn-copy.copied {
+      background: #16a34a !important;
+      border-color: #16a34a !important;
+      color: white !important;
+    }
+    /* ---- Result screen animations ---- */
+    @keyframes result-fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .result-fade-in {
+      opacity: 0;
+      animation: result-fade-up 0.6s ease-out forwards;
+    }
+
+    @keyframes glow-border {
+      0%, 100% { box-shadow: 0 0 20px rgba(100,72,178,0.08), 0 8px 32px rgba(100,72,178,0.06); }
+      50% { box-shadow: 0 0 30px rgba(100,72,178,0.15), 0 8px 40px rgba(100,72,178,0.12); }
+    }
+    .result-glow {
+      animation: glow-border 3s ease-in-out infinite, result-fade-up 0.6s ease-out forwards;
+    }
+
+    @keyframes tag-pop {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .choice-tag-animated {
+      opacity: 0;
+      animation: tag-pop 0.3s ease-out forwards;
+      cursor: default;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+    .choice-tag-animated:hover {
+      background: rgba(100,72,178,0.15);
+      border-color: rgba(100,72,178,0.35);
+      transform: scale(1.05);
+    }
+
+    /* ---- Mouse trail particles (welcome screen) ---- */
+    .mouse-particle {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      z-index: 5;
+      mix-blend-mode: screen;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <!-- ============================================ -->
+    <!-- SCREEN 0: WELCOME                            -->
+    <!-- ============================================ -->
+    <section class="screen active" id="screen-welcome">
+
+      <!-- Mouse trail canvas -->
+      <canvas id="mouse-trail-canvas" class="absolute inset-0 pointer-events-none z-[5]"></canvas>
+
+      <!-- Decorative blobs -->
+      <div class="blob-1 absolute -top-32 -left-32 w-96 h-96 rounded-full pointer-events-none"></div>
+      <div class="blob-2 absolute top-1/3 -right-24 w-80 h-80 rounded-full pointer-events-none"></div>
+      <div class="blob-3 absolute -bottom-20 left-1/4 w-72 h-72 rounded-full pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col items-center justify-between min-h-full px-5 py-5">
+
+        <!-- Logos bar -->
+        <div class="flex items-center justify-center gap-5 w-full">
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.18em] text-on-surface-variant uppercase opacity-60">OUR SPACE</span>
+          <span class="w-px h-3 bg-outline-variant"></span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.18em] text-on-surface-variant uppercase opacity-60">SENAC RJ</span>
+          <span class="w-px h-3 bg-outline-variant"></span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.18em] text-on-surface-variant uppercase opacity-60">RFW 2026</span>
+        </div>
+
+        <!-- Hero content -->
+        <div class="flex flex-col items-center text-center flex-1 justify-center w-full max-w-2xl">
+          <!-- Decorative icon -->
+          <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary-container flex items-center justify-center mb-3 md:mb-4 shadow-glass-sm">
+            <span class="material-symbols-rounded text-primary text-xl md:text-2xl" style="font-variation-settings: 'FILL' 1, 'wght' 500;">auto_awesome</span>
+          </div>
+
+          <h1 class="font-headline text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-[1.1] mb-1">
+            <span class="text-shimmer">CRIE SUA IMAGEM</span>
+            <br>
+            <span class="text-on-surface">DE MODA COM IA</span>
+          </h1>
+          <h2 class="font-headline text-sm sm:text-base md:text-lg font-bold tracking-[0.15em] text-primary mb-2 md:mb-3">EM 6 PASSOS</h2>
+          <p class="font-body text-xs md:text-sm text-on-surface-variant leading-relaxed max-w-xs md:max-w-sm mb-4 md:mb-6">
+            Use sua criatividade para construir seu prompt de moda e veja sua visao ganhar vida na passarela digital.
+          </p>
+
+          <!-- Glassmorphic form card -->
+          <form id="form-welcome" autocomplete="off"
+                class="w-full max-w-sm md:max-w-md bg-white/40 backdrop-blur-2xl rounded-2xl p-5 md:p-6 shadow-glass border border-white/20 space-y-3 md:space-y-4">
+            <div>
+              <label for="input-nome" class="block text-[0.6rem] font-bold tracking-[0.12em] text-primary uppercase mb-1 ml-1">Seu Nome</label>
+              <input type="text" id="input-nome" required autocomplete="name"
+                     placeholder="Ex: Clara Silva"
+                     class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-all duration-300 py-2 text-sm md:text-base font-medium placeholder:text-slate-400 text-on-surface font-body">
+            </div>
+            <div>
+              <label for="input-email" class="block text-[0.6rem] font-bold tracking-[0.12em] text-primary uppercase mb-1 ml-1">E-mail</label>
+              <input type="email" id="input-email" required autocomplete="email"
+                     placeholder="seu@email.com"
+                     class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-all duration-300 py-2 text-sm md:text-base font-medium placeholder:text-slate-400 text-on-surface font-body">
+            </div>
+            <div class="pt-1 md:pt-2">
+              <button type="submit" id="btn-comecar"
+                      class="group relative w-full overflow-hidden rounded-full bg-gradient-to-r from-primary to-primary-container p-[2px] transition-transform duration-300 active:scale-95 shadow-xl shadow-primary/20">
+                <div class="bg-primary/10 group-hover:bg-transparent transition-colors duration-300 rounded-full py-3 md:py-4 flex items-center justify-center gap-2">
+                  <span class="font-body font-bold text-white tracking-[0.12em] uppercase text-xs md:text-sm">COMECAR EXPERIENCIA</span>
+                  <span class="material-symbols-rounded text-white text-base">arrow_forward</span>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-[0.5rem] text-on-surface-variant/40 text-center font-body mt-3">
+          Michelle Douglas @mispace | ourspace.com.br
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 1-4: QUIZ                             -->
+    <!-- ============================================ -->
+    <section class="screen" id="screen-quiz">
+
+      <!-- TopAppBar -->
+      <header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-5 h-14 bg-white/70 backdrop-blur-xl shadow-glass border-b border-white/40">
+        <button id="btn-voltar" aria-label="Voltar"
+                class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high active:bg-surface-container-highest transition-colors">
+          <span class="material-symbols-rounded text-xl">arrow_back</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">Rio Fashion Week</span>
+          <span class="text-outline-variant text-[0.5rem]">|</span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-primary uppercase">SENAC CAPSULA</span>
+          <span class="text-outline-variant text-[0.5rem]">|</span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">OUR SPACE</span>
+        </div>
+        <div class="w-10 h-10"></div>
+      </header>
+
+      <!-- Step NavBar (6 steps) -->
+      <nav class="fixed top-14 left-0 w-full z-40 bg-white/60 backdrop-blur-lg border-b border-white/30">
+        <div class="flex items-stretch justify-around max-w-3xl mx-auto">
+          <button id="step-nav-1" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-primary text-primary transition-all duration-300">
+            <span class="material-symbols-rounded text-base">checkroom</span>
+            <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Produto</span>
+          </button>
+          <button id="step-nav-2" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+            <span class="material-symbols-rounded text-base">stylus</span>
+            <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Estilo</span>
+          </button>
+          <button id="step-nav-3" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+            <span class="material-symbols-rounded text-base">palette</span>
+            <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Cor</span>
+          </button>
+          <button id="step-nav-4" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+            <span class="material-symbols-rounded text-base">person</span>
+            <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Modelo</span>
+          </button>
+          <button id="step-nav-5" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+            <span class="material-symbols-rounded text-base">location_on</span>
+            <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Local</span>
+          </button>
+          <button id="step-nav-6" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+            <span class="material-symbols-rounded text-base">flare</span>
+            <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Sensação</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Quiz body -->
+      <div class="pt-[7.5rem] pb-4 px-4 md:px-10 lg:px-14 max-w-[1400px] mx-auto">
+
+        <!-- Progress bar -->
+        <div class="flex items-center gap-2 mb-3">
+          <div class="flex-1 h-1 bg-surface-container-high rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-iridescent rounded-full transition-all duration-500 ease-out" id="progress-fill" style="width: 25%"></div>
+          </div>
+          <span class="font-body text-[0.6rem] font-bold text-primary tracking-wide" id="progress-label">25%</span>
+        </div>
+
+        <!-- Step info -->
+        <div class="mb-3 md:mb-5 md:text-center">
+          <p class="font-body text-[0.55rem] md:text-[0.65rem] font-bold tracking-[0.2em] text-on-surface-variant/60 uppercase mb-0.5" id="step-indicator">PASSO 1 DE 4</p>
+          <h2 class="font-headline text-lg md:text-2xl lg:text-3xl font-extrabold tracking-tight text-on-surface" id="step-title">ESCOLHA O ESTILO</h2>
+        </div>
+
+        <!-- Options grid (populated by JS) -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 md:gap-3" id="options-grid">
+          <!-- Options populated by JS -->
+        </div>
+
+        <!-- Footer -->
+        <p class="text-[0.5rem] text-on-surface-variant/30 text-center font-body mt-4">
+          Michelle Douglas @mispace | ourspace.com.br
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 5: LOADING                            -->
+    <!-- ============================================ -->
+    <section class="screen" id="screen-loading">
+
+      <!-- TopAppBar -->
+      <header class="fixed top-0 left-0 w-full z-50 flex items-center justify-center px-5 h-14 bg-white/70 backdrop-blur-xl shadow-glass border-b border-white/40">
+        <div class="flex items-center gap-2">
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">Rio Fashion Week</span>
+          <span class="text-outline-variant text-[0.5rem]">|</span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-primary uppercase">SENAC CAPSULA</span>
+          <span class="text-outline-variant text-[0.5rem]">|</span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">OUR SPACE</span>
+        </div>
+      </header>
+
+      <!-- Loading content -->
+      <div class="relative flex flex-col items-center justify-center min-h-full pt-14 px-6 overflow-hidden">
+
+        <!-- Background gradient -->
+        <div class="absolute inset-0 bg-gradient-subtle pointer-events-none"></div>
+
+        <!-- Particles container (JS fills this) -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden" id="loading-particles"></div>
+
+        <!-- Holographic dress mannequin -->
+        <div class="relative mb-8">
+          <!-- Orbit particles -->
+          <div class="orbit-particle animate-orbit" style="background: rgba(100,72,178,0.5); width: 6px; height: 6px; box-shadow: 0 0 12px rgba(100,72,178,0.5);"></div>
+          <div class="orbit-particle animate-orbit-reverse" style="background: rgba(160,45,112,0.4); width: 5px; height: 5px; box-shadow: 0 0 10px rgba(160,45,112,0.4); animation-delay: -2s;"></div>
+          <div class="orbit-particle animate-orbit" style="background: rgba(0,93,167,0.4); width: 4px; height: 4px; box-shadow: 0 0 8px rgba(0,93,167,0.4); animation-delay: -4s; animation-duration: 10s;"></div>
+
+          <!-- Pulse rings -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-48 h-48 rounded-full border border-primary/20 animate-pulse-ring"></div>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-64 h-64 rounded-full border border-tertiary/10 animate-pulse-ring" style="animation-delay: 1s;"></div>
+          </div>
+
+          <!-- Dress SVG -->
+          <div class="dress-svg-wrapper relative z-10">
+            <svg viewBox="0 0 200 300" class="w-44 h-auto animate-fabric-pulse" aria-hidden="true">
+              <defs>
+                <linearGradient id="dress-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6448b2" stop-opacity="0.9"/>
+                  <stop offset="50%" stop-color="#a02d70" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#005da7" stop-opacity="0.9"/>
+                </linearGradient>
+                <linearGradient id="skin-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#6448b2" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#a02d70" stop-opacity="0.3"/>
+                </linearGradient>
+              </defs>
+              <!-- Head -->
+              <ellipse cx="100" cy="55" rx="20" ry="26" fill="none" stroke="url(#skin-grad)" stroke-width="1.5"/>
+              <!-- Neck -->
+              <line x1="100" y1="81" x2="100" y2="98" stroke="url(#skin-grad)" stroke-width="1.5"/>
+              <!-- Shoulders -->
+              <path d="M68,103 Q100,96 132,103" fill="none" stroke="url(#dress-grad)" stroke-width="1.5"/>
+              <!-- Torso / Dress top -->
+              <path d="M68,103 L62,170 Q100,180 138,170 L132,103" fill="none" stroke="url(#dress-grad)" stroke-width="1.5"/>
+              <!-- Waist accent -->
+              <path d="M72,142 Q100,150 128,142" fill="none" stroke="url(#dress-grad)" stroke-width="1" opacity="0.6"/>
+              <!-- Skirt -->
+              <path d="M62,170 Q50,230 45,275" fill="none" stroke="url(#dress-grad)" stroke-width="1.5"/>
+              <path d="M138,170 Q150,230 155,275" fill="none" stroke="url(#dress-grad)" stroke-width="1.5"/>
+              <path d="M62,170 Q100,190 138,170" fill="none" stroke="url(#dress-grad)" stroke-width="1" opacity="0.4"/>
+              <path d="M55,210 Q100,235 145,210" fill="none" stroke="url(#dress-grad)" stroke-width="1" opacity="0.3"/>
+              <path d="M48,245 Q100,270 152,245" fill="none" stroke="url(#dress-grad)" stroke-width="1" opacity="0.2"/>
+              <!-- Arms -->
+              <path d="M68,103 L48,148 L52,185" fill="none" stroke="url(#skin-grad)" stroke-width="1.5"/>
+              <path d="M132,103 L152,148 L148,185" fill="none" stroke="url(#skin-grad)" stroke-width="1.5"/>
+              <!-- Hem -->
+              <path d="M45,275 Q100,290 155,275" fill="none" stroke="url(#dress-grad)" stroke-width="1.2" opacity="0.5"/>
+            </svg>
+
+            <!-- Scan line -->
+            <div class="scan-line absolute left-0 w-full"></div>
+          </div>
+        </div>
+
+        <!-- Loading text -->
+        <div class="relative z-10 text-center mb-8">
+          <h3 class="font-headline text-lg font-bold text-on-surface mb-3" id="loading-title">Desenhando seu prompt...</h3>
+          <p class="font-body text-sm text-on-surface-variant transition-opacity duration-300" id="loading-phrase">A IA esta tecendo sua criacao...</p>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="relative z-10 w-full max-w-xs">
+          <div class="h-2 bg-surface-container-high rounded-full overflow-hidden mb-2">
+            <div class="h-full bg-gradient-iridescent rounded-full transition-all duration-400 ease-out" id="loading-progress-fill" style="width: 0%"></div>
+          </div>
+          <p class="font-body text-xs font-bold text-primary text-center tracking-wider" id="loading-progress-label">0%</p>
+        </div>
+
+        <!-- Footer -->
+        <p class="absolute bottom-4 left-0 w-full text-[0.55rem] text-on-surface-variant/40 text-center font-body">
+          Desenvolvido por Michelle Douglas @mispace | www.ourspace.com.br
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SCREEN 6: RESULT                             -->
+    <!-- ============================================ -->
+    <section class="screen" id="screen-result">
+
+      <!-- TopAppBar -->
+      <header class="fixed top-0 left-0 w-full z-50 flex items-center justify-center px-5 h-14 bg-white/70 backdrop-blur-xl shadow-glass border-b border-white/40">
+        <div class="flex items-center gap-2">
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">Rio Fashion Week</span>
+          <span class="text-outline-variant text-[0.5rem]">|</span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-primary uppercase">SENAC CAPSULA</span>
+          <span class="text-outline-variant text-[0.5rem]">|</span>
+          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">OUR SPACE</span>
+        </div>
+      </header>
+
+      <!-- Confetti canvas for result screen -->
+      <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-[60]" style="display:none;"></canvas>
+
+      <!-- Result content -->
+      <div class="pt-16 md:pt-20 pb-6 px-4 md:px-8 max-w-4xl mx-auto relative">
+
+        <!-- Success header with emphasis on name -->
+        <div class="text-center mb-4 md:mb-5 result-fade-in" style="animation-delay: 0.1s;">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3">
+            <span class="material-symbols-rounded text-primary text-xs" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
+            <span class="font-body text-[0.55rem] font-bold tracking-[0.15em] text-primary uppercase">Powered by AI — Rio Fashion Week 2026</span>
+          </div>
+          <h2 class="font-headline text-xl md:text-2xl font-extrabold tracking-tighter text-on-surface mb-1">
+            <span id="result-user-name" class="text-shimmer text-2xl md:text-3xl"></span>, SEU PROMPT ESTA PRONTO!
+          </h2>
+          <p class="font-body text-xs md:text-sm text-on-surface-variant">Suas escolhas criativas geraram um editorial de moda unico com IA</p>
+        </div>
+
+        <!-- Main content: Prompt card (with tags inside) + QR side by side -->
+        <div class="w-full flex flex-col md:flex-row gap-4 mb-4">
+
+          <!-- Prompt card with tags inside -->
+          <div class="flex-grow relative bg-white/70 backdrop-blur-xl rounded-xl p-4 shadow-glass border border-white/20 result-fade-in result-glow" style="animation-delay: 0.3s;">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-2">
+              <span class="font-body text-[0.55rem] md:text-[0.65rem] font-bold tracking-[0.12em] text-on-surface-variant/60 uppercase">
+                Seu prompt de moda
+              </span>
+              <button id="btn-copy"
+                      class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary hover:text-white font-body text-[0.6rem] font-bold tracking-[0.08em] uppercase transition-all duration-300 text-primary">
+                <span class="material-symbols-rounded text-sm">content_copy</span>
+                <span id="copy-label">COPIAR</span>
+              </button>
+            </div>
+            <!-- Prompt text -->
+            <div class="bg-surface-container-low/50 rounded-lg p-3 border-l-[3px] border-primary mb-3">
+              <div class="font-body text-xs md:text-sm text-on-surface leading-relaxed" id="prompt-text"></div>
+            </div>
+            <!-- Tags inside the card -->
+            <div class="flex flex-wrap gap-1.5" id="result-choices">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- QR code card -->
+          <div class="w-full md:w-44 shrink-0 bg-white/70 backdrop-blur-xl rounded-xl p-4 flex flex-col items-center justify-center gap-2 border border-white/30 shadow-glass result-fade-in" style="animation-delay: 0.5s;">
+            <div class="w-28 h-28 bg-white rounded-lg p-2 border border-violet-100 flex items-center justify-center">
+              <img src="assets/images/qrcode-galeria.png" alt="QR Code - Galeria de Imagens" class="w-full h-full object-contain">
+            </div>
+            <p class="text-center font-body uppercase text-[0.5rem] font-black text-on-surface leading-tight tracking-wide">
+              ESCANEIE E VEJA<br>SEU LOOK CRIADO<br>COM IA
+            </p>
+          </div>
+        </div>
+
+        <!-- Actions row -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4 result-fade-in" style="animation-delay: 0.7s;">
+          <div class="flex items-center gap-1.5 text-on-surface-variant/70">
+            <span class="material-symbols-rounded text-sm">info</span>
+            <p class="font-body text-[0.65rem] font-medium">
+              Cole o prompt no Gemini ou aguarde sua imagem no telao!
+            </p>
+          </div>
+          <button id="btn-novo"
+                  class="flex items-center justify-center gap-1.5 bg-white/70 backdrop-blur-xl border border-outline-variant/30 text-on-surface font-body uppercase tracking-[0.08em] px-5 py-2.5 rounded-lg hover:bg-surface-container-high transition-all duration-300 group text-[0.65rem] font-bold shrink-0">
+            <span class="material-symbols-rounded text-sm group-hover:rotate-180 transition-transform duration-500">refresh</span>
+            Criar Outro
+          </button>
+        </div>
+
+        <!-- Logos + Footer compact -->
+        <div class="flex items-center justify-center gap-4 text-on-surface-variant/40">
+          <span class="font-headline text-[0.5rem] font-bold tracking-[0.15em] uppercase">OUR SPACE</span>
+          <span class="w-px h-2.5 bg-outline-variant/40"></span>
+          <span class="font-headline text-[0.5rem] font-bold tracking-[0.15em] uppercase">SENAC RJ</span>
+          <span class="w-px h-2.5 bg-outline-variant/40"></span>
+          <span class="font-headline text-[0.5rem] font-bold tracking-[0.15em] uppercase">RFW 2026</span>
+        </div>
+        <p class="text-[0.5rem] text-on-surface-variant/30 text-center font-body mt-1">
+          Michelle Douglas @mispace | ourspace.com.br
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Config: URL do backend Google Apps Script (gitignored) -->
+  <script src="config.js" onerror="console.log('config.js not found')"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

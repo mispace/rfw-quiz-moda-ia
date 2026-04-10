@@ -1,0 +1,309 @@
+/* ========================================
+   RFW Quiz Moda IA - Responsive Styles
+   Mobile-first with desktop optimization
+   ======================================== */
+
+/* --- Mobile (default, < 640px) --- */
+@media (max-width: 639px) {
+  .title-main {
+    font-size: 32px;
+  }
+
+  .title-accent {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    padding: 0 8px;
+  }
+
+  .logos-bar {
+    gap: 20px;
+  }
+
+  .logo {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .options-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 400px;
+  }
+
+  .step-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .step-indicator {
+    font-size: 11px;
+  }
+
+  .quiz-header {
+    margin-bottom: 20px;
+  }
+
+  .option-card .option-label {
+    font-size: 11px;
+    padding: 8px 6px;
+  }
+
+  .result-title {
+    font-size: 26px;
+  }
+
+  .prompt-card {
+    padding: 20px 16px;
+  }
+
+  .prompt-text {
+    font-size: 14px;
+  }
+
+  .result-choices {
+    gap: 8px;
+  }
+
+  .choice-tag {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .mannequin-wrapper {
+    width: 120px;
+    height: 180px;
+  }
+
+  .loading-phrase {
+    font-size: 15px;
+    padding: 0 16px;
+  }
+
+  .screen {
+    padding: 16px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 16px 24px;
+  }
+
+  .result-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-secondary {
+    width: 100%;
+  }
+}
+
+/* --- Tablet (640px - 1023px) --- */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .title-main {
+    font-size: 42px;
+  }
+
+  .title-accent {
+    font-size: 38px;
+  }
+
+  .options-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 600px;
+  }
+
+  .step-title {
+    font-size: 30px;
+  }
+
+  .screen {
+    padding: 20px;
+  }
+}
+
+/* --- Small Desktop (1024px - 1279px) --- */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .options-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    max-width: 800px;
+  }
+}
+
+/* --- Desktop (1280px+) --- */
+@media (min-width: 1280px) {
+  .screen {
+    padding: 32px 48px;
+  }
+
+  .options-grid {
+    gap: 18px;
+    max-width: 950px;
+  }
+
+  .title-main {
+    font-size: 60px;
+  }
+
+  .title-accent {
+    font-size: 52px;
+  }
+
+  .result-container {
+    max-width: 750px;
+  }
+
+  .prompt-card {
+    padding: 32px 28px;
+  }
+}
+
+/* --- Large Screens / Event Display (1600px+) --- */
+@media (min-width: 1600px) {
+  .title-main {
+    font-size: 68px;
+  }
+
+  .title-accent {
+    font-size: 58px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .options-grid {
+    max-width: 1100px;
+    gap: 20px;
+  }
+
+  .step-title {
+    font-size: 42px;
+  }
+
+  .option-card .option-label {
+    font-size: 14px;
+  }
+}
+
+/* --- Landscape Mobile --- */
+@media (max-height: 500px) and (orientation: landscape) {
+  #screen-welcome {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .logos-bar {
+    padding: 8px 0;
+  }
+
+  .title-main {
+    font-size: 28px;
+  }
+
+  .title-accent {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .form-welcome {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .form-welcome .input-group {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .btn-primary {
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  .options-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .step-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .mannequin-wrapper {
+    width: 100px;
+    height: 150px;
+  }
+}
+
+/* --- Hover disabled on touch --- */
+@media (hover: none) {
+  .option-card:hover {
+    transform: none;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .option-card:active {
+    transform: scale(0.97);
+    border-color: var(--sage-green);
+  }
+
+  .btn-primary:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .mannequin-svg,
+  .loading-ring,
+  .floating-thread {
+    animation: none !important;
+  }
+}
+
+/* --- High Contrast --- */
+@media (prefers-contrast: high) {
+  .option-card {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .option-card:hover,
+  .option-card.selected {
+    border-color: var(--sage-green);
+  }
+
+  .progress-bar {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .input-group input {
+    border-width: 2px;
+  }
+}

@@ -1,0 +1,246 @@
+/* ========================================
+   RFW Quiz Moda IA - Animations
+   ======================================== */
+
+/* --- Mannequin Rotation --- */
+@keyframes mannequin-float {
+  0%, 100% { transform: translateY(0) rotateY(0deg); }
+  25% { transform: translateY(-8px) rotateY(5deg); }
+  50% { transform: translateY(0) rotateY(0deg); }
+  75% { transform: translateY(-5px) rotateY(-5deg); }
+}
+
+.mannequin-svg {
+  animation: mannequin-float 4s ease-in-out infinite;
+}
+
+/* --- Loading Ring Spin --- */
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading-ring {
+  animation: ring-spin 2s linear infinite;
+}
+
+/* --- SVG Path Draw --- */
+@keyframes path-draw {
+  from { stroke-dashoffset: 400; }
+  to { stroke-dashoffset: 0; }
+}
+
+.mannequin-svg path,
+.mannequin-svg line,
+.mannequin-svg ellipse {
+  stroke-dasharray: 400;
+  animation: path-draw 2.5s ease-in-out infinite alternate;
+}
+
+/* --- Mannequin Glow Pulse --- */
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(139, 187, 120, 0.2)); }
+  50% { filter: drop-shadow(0 0 30px rgba(139, 187, 120, 0.5)); }
+}
+
+.mannequin-wrapper {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* --- Loading Phrase Fade --- */
+@keyframes phrase-fade {
+  0% { opacity: 0; transform: translateY(8px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-8px); }
+}
+
+.loading-phrase {
+  animation: phrase-fade 2.5s ease-in-out;
+}
+
+/* --- Particle Float --- */
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(0deg);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+.particle {
+  animation: particle-float linear forwards;
+}
+
+/* --- Floating Threads --- */
+@keyframes thread-drift {
+  0%, 100% {
+    opacity: 0.1;
+    transform: translateY(0) rotate(var(--rotation, 15deg));
+  }
+  50% {
+    opacity: 0.25;
+    transform: translateY(-20px) rotate(calc(var(--rotation, 15deg) + 5deg));
+  }
+}
+
+.floating-thread {
+  animation: thread-drift 6s ease-in-out infinite;
+}
+
+.thread-1 { --rotation: 15deg; animation-delay: 0s; }
+.thread-2 { --rotation: -20deg; animation-delay: 2s; }
+.thread-3 { --rotation: 8deg; animation-delay: 4s; }
+
+/* --- Card Selection Pulse --- */
+@keyframes selection-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(139, 187, 120, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(139, 187, 120, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 187, 120, 0); }
+}
+
+.option-card.selected {
+  animation: selection-pulse 0.8s ease-out;
+}
+
+/* --- Check Icon Pop --- */
+@keyframes check-pop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.option-card.selected .check-icon {
+  animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- Welcome Title Entrance --- */
+@keyframes title-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#screen-welcome.active .title-main {
+  animation: title-entrance 0.8s ease-out 0.2s both;
+}
+
+#screen-welcome.active .title-accent {
+  animation: title-entrance 0.8s ease-out 0.4s both;
+}
+
+#screen-welcome.active .subtitle {
+  animation: title-entrance 0.8s ease-out 0.6s both;
+}
+
+#screen-welcome.active .form-welcome {
+  animation: title-entrance 0.8s ease-out 0.8s both;
+}
+
+/* --- Options Grid Staggered Entrance --- */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.options-grid .option-card {
+  opacity: 0;
+  animation: card-enter 0.4s ease-out forwards;
+}
+
+.options-grid .option-card:nth-child(1) { animation-delay: 0.05s; }
+.options-grid .option-card:nth-child(2) { animation-delay: 0.1s; }
+.options-grid .option-card:nth-child(3) { animation-delay: 0.15s; }
+.options-grid .option-card:nth-child(4) { animation-delay: 0.2s; }
+.options-grid .option-card:nth-child(5) { animation-delay: 0.25s; }
+.options-grid .option-card:nth-child(6) { animation-delay: 0.3s; }
+.options-grid .option-card:nth-child(7) { animation-delay: 0.35s; }
+.options-grid .option-card:nth-child(8) { animation-delay: 0.4s; }
+.options-grid .option-card:nth-child(9) { animation-delay: 0.45s; }
+.options-grid .option-card:nth-child(10) { animation-delay: 0.5s; }
+
+/* --- Result Entrance --- */
+@keyframes result-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#screen-result.active .result-title {
+  animation: result-entrance 0.6s ease-out 0.1s both;
+}
+
+#screen-result.active .result-subtitle {
+  animation: result-entrance 0.6s ease-out 0.2s both;
+}
+
+#screen-result.active .prompt-card {
+  animation: result-entrance 0.6s ease-out 0.3s both;
+}
+
+#screen-result.active .result-choices {
+  animation: result-entrance 0.6s ease-out 0.4s both;
+}
+
+#screen-result.active .result-actions {
+  animation: result-entrance 0.6s ease-out 0.5s both;
+}
+
+/* --- Button Shimmer --- */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.btn-primary {
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    90deg,
+    var(--sage-green) 0%,
+    var(--sage-light) 50%,
+    var(--sage-green) 100%
+  );
+  animation: shimmer 3s linear infinite;
+}
+
+/* --- Copy Success --- */
+@keyframes copy-flash {
+  0% { background: var(--sage-green); }
+  100% { background: rgba(139, 187, 120, 0.15); }
+}
+
+.btn-copy.copied {
+  animation: copy-flash 1.5s ease-out;
+}
+
+/* --- Loading Progress Fill --- */
+@keyframes progress-indeterminate {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
