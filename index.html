@@ -209,9 +209,9 @@
       border: 2px solid transparent;
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       outline: none;
-      aspect-ratio: 1/1;
       display: flex;
       flex-direction: column;
+      min-height: 0;
     }
     .option-card:hover {
       transform: scale(1.02);
@@ -234,7 +234,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.8rem;
+      min-height: 3rem;
       background: linear-gradient(135deg, rgba(100,72,178,0.06) 0%, rgba(160,45,112,0.04) 50%, rgba(0,93,167,0.06) 100%);
     }
     .option-image {
@@ -242,7 +243,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% - 2.2rem);
+      height: calc(100% - 1.8rem);
       object-fit: cover;
       object-position: center;
     }
@@ -260,7 +261,7 @@
       letter-spacing: 0.03em;
       color: #2d2f33;
       background: rgba(255,255,255,0.9);
-      min-height: 2.2rem;
+      min-height: 1.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -530,27 +531,27 @@
       <!-- Step NavBar (6 steps) -->
       <nav class="fixed top-14 left-0 w-full z-40 bg-white/60 backdrop-blur-lg border-b border-white/30">
         <div class="flex items-stretch justify-around max-w-3xl mx-auto">
-          <button id="step-nav-1" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-primary text-primary transition-all duration-300">
+          <button id="step-nav-1" class="flex-1 flex flex-col items-center justify-center py-1 gap-0 border-b-2 border-primary text-primary transition-all duration-300">
             <span class="material-symbols-rounded text-base">checkroom</span>
             <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Produto</span>
           </button>
-          <button id="step-nav-2" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+          <button id="step-nav-2" class="flex-1 flex flex-col items-center justify-center py-1 gap-0 border-b-2 border-transparent text-slate-400 transition-all duration-300">
             <span class="material-symbols-rounded text-base">stylus</span>
             <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Estilo</span>
           </button>
-          <button id="step-nav-3" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+          <button id="step-nav-3" class="flex-1 flex flex-col items-center justify-center py-1 gap-0 border-b-2 border-transparent text-slate-400 transition-all duration-300">
             <span class="material-symbols-rounded text-base">palette</span>
             <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Cor</span>
           </button>
-          <button id="step-nav-4" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+          <button id="step-nav-4" class="flex-1 flex flex-col items-center justify-center py-1 gap-0 border-b-2 border-transparent text-slate-400 transition-all duration-300">
             <span class="material-symbols-rounded text-base">person</span>
             <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Modelo</span>
           </button>
-          <button id="step-nav-5" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+          <button id="step-nav-5" class="flex-1 flex flex-col items-center justify-center py-1 gap-0 border-b-2 border-transparent text-slate-400 transition-all duration-300">
             <span class="material-symbols-rounded text-base">location_on</span>
             <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Local</span>
           </button>
-          <button id="step-nav-6" class="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 border-b-2 border-transparent text-slate-400 transition-all duration-300">
+          <button id="step-nav-6" class="flex-1 flex flex-col items-center justify-center py-1 gap-0 border-b-2 border-transparent text-slate-400 transition-all duration-300">
             <span class="material-symbols-rounded text-base">flare</span>
             <span class="text-[0.45rem] md:text-[0.5rem] font-bold tracking-[0.06em] uppercase font-body">Sensação</span>
           </button>
@@ -558,29 +559,29 @@
       </nav>
 
       <!-- Quiz body -->
-      <div class="pt-[7.5rem] pb-4 px-4 md:px-10 lg:px-14 max-w-[1400px] mx-auto">
+      <div class="pt-[7rem] pb-2 px-4 md:px-10 lg:px-14 max-w-[1400px] mx-auto flex flex-col" style="height: calc(100% - 0px);">
 
         <!-- Progress bar -->
-        <div class="flex items-center gap-2 mb-3">
+        <div class="flex items-center gap-2 mb-1.5">
           <div class="flex-1 h-1 bg-surface-container-high rounded-full overflow-hidden">
             <div class="h-full bg-gradient-iridescent rounded-full transition-all duration-500 ease-out" id="progress-fill" style="width: 25%"></div>
           </div>
-          <span class="font-body text-[0.6rem] font-bold text-primary tracking-wide" id="progress-label">25%</span>
+          <span class="font-body text-[0.55rem] font-bold text-primary tracking-wide" id="progress-label">25%</span>
         </div>
 
         <!-- Step info -->
-        <div class="mb-3 md:mb-5 md:text-center">
-          <p class="font-body text-[0.55rem] md:text-[0.65rem] font-bold tracking-[0.2em] text-on-surface-variant/60 uppercase mb-0.5" id="step-indicator">PASSO 1 DE 4</p>
-          <h2 class="font-headline text-lg md:text-2xl lg:text-3xl font-extrabold tracking-tight text-on-surface" id="step-title">ESCOLHA O ESTILO</h2>
+        <div class="mb-1.5 md:mb-3 md:text-center">
+          <p class="font-body text-[0.5rem] md:text-[0.6rem] font-bold tracking-[0.2em] text-on-surface-variant/60 uppercase mb-0" id="step-indicator">PASSO 1 DE 6</p>
+          <h2 class="font-headline text-base md:text-xl lg:text-2xl font-extrabold tracking-tight text-on-surface" id="step-title">ESCOLHA O ESTILO</h2>
         </div>
 
         <!-- Options grid (populated by JS) -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 md:gap-3" id="options-grid">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 grid-rows-[1fr_1fr] gap-1.5 md:gap-2 flex-1 min-h-0" id="options-grid">
           <!-- Options populated by JS -->
         </div>
 
         <!-- Footer -->
-        <p class="text-[0.5rem] text-on-surface-variant/30 text-center font-body mt-4">
+        <p class="text-[0.45rem] text-on-surface-variant/30 text-center font-body mt-1">
           Michelle Douglas @mispace | ourspace.com.br
         </p>
       </div>
