@@ -19,7 +19,7 @@ const Quiz = {
     {
       key: 'produto',
       title: 'ESCOLHA O PRODUTO',
-      subtitle: 'Qual peca de roupa voce quer criar?',
+      subtitle: 'Qual peça de roupa você quer criar?',
       options: [
         { id: 'vestido-curto', label: 'Vestido Curto', value: 'short cocktail dress', emoji: '👗' },
         { id: 'vestido-longo', label: 'Vestido Longo', value: 'long flowing gown', emoji: '👗' },
@@ -36,7 +36,7 @@ const Quiz = {
     {
       key: 'estilo',
       title: 'ESCOLHA O ESTILO',
-      subtitle: 'Qual estetica define sua criacao?',
+      subtitle: 'Qual estética define sua criação?',
       options: [
         { id: 'casual', label: 'Casual', value: 'casual relaxed style', emoji: '😎' },
         { id: 'esportivo', label: 'Esportivo', value: 'sporty athletic style', emoji: '⚡' },
@@ -53,7 +53,7 @@ const Quiz = {
     {
       key: 'cor',
       title: 'ESCOLHA A CARTELA DE COR',
-      subtitle: 'Qual paleta de cores voce imagina?',
+      subtitle: 'Qual paleta de cores você imagina?',
       options: [
         { id: 'tons-neutros', label: 'Tons Neutros', value: 'neutral tones palette', emoji: '🤍' },
         { id: 'tons-pasteis', label: 'Tons Pastéis', value: 'soft pastel colors', emoji: '🩷' },
@@ -70,7 +70,7 @@ const Quiz = {
     {
       key: 'modelo',
       title: 'QUEM VESTE?',
-      subtitle: 'Escolha quem vai usar sua criacao.',
+      subtitle: 'Escolha quem vai usar sua criação.',
       options: [
         { id: 'mulher-negra', label: 'Mulher Negra', value: 'beautiful Black woman', emoji: '👩🏿' },
         { id: 'homem-negro', label: 'Homem Negro', value: 'handsome Black man', emoji: '👨🏿' },
@@ -128,6 +128,20 @@ const Quiz = {
     this._bindEvents();
     this._createParticles();
     this._initMouseTrail();
+    this._preloadAllImages();
+  },
+
+  /**
+   * Pre-load all quiz images in the background so they're cached
+   * when the user reaches each step. Fixes mobile loading issues.
+   */
+  _preloadAllImages() {
+    this.steps.forEach(step => {
+      step.options.forEach(option => {
+        const img = new Image();
+        img.src = `assets/images/${step.key}/${option.id}.jpg`;
+      });
+    });
   },
 
   /**
@@ -158,6 +172,14 @@ const Quiz = {
 
     // New prompt button
     Utils.$('#btn-novo').addEventListener('click', () => this._restart());
+
+    // Share buttons
+    const btnWhats = Utils.$('#btn-share-whatsapp');
+    if (btnWhats) btnWhats.addEventListener('click', () => this._shareWhatsApp());
+    const btnInsta = Utils.$('#btn-share-instagram');
+    if (btnInsta) btnInsta.addEventListener('click', () => this._shareInstagram());
+    const btnLink = Utils.$('#btn-share-link');
+    if (btnLink) btnLink.addEventListener('click', () => this._shareLink());
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -235,7 +257,7 @@ const Quiz = {
 
       card.innerHTML = `
         <div class="option-placeholder">${option.emoji}</div>
-        <img class="${imgClass}" src="${imgSrc}" alt="${option.label}" loading="lazy"
+        <img class="${imgClass}" src="${imgSrc}" alt="${option.label}" loading="eager" decoding="async" fetchpriority="high"
              onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';"
              onload="this.previousElementSibling.style.display='none';">
         <div class="option-label">${option.label}</div>
@@ -444,19 +466,19 @@ const Quiz = {
     const prep = this._preposicaoLocacao(L.locacao);
 
     const promptPT_HTML =
-      `Editorial de moda hiper-realista com ${tip(L.modelo, 'Modelo')} em alta definicao, ` +
+      `Editorial de moda hiper-realista com ${tip(L.modelo, 'Modelo')} em alta definição, ` +
       `vestindo ${tip(L.produto, 'Produto')} com caimento e texturas realistas. ` +
-      `O tecido das roupas sera nos tons ${tip(L.cor, 'Cor')} e o estilo ${tip(L.estilo, 'Estilo')}. ` +
-      `O editorial foi feito ${prep} ${tip(L.locacao, 'Locacao')} e transmite a sensacao de ${tip(L.sensacao, 'Sensacao')}. ` +
+      `O tecido das roupas será nos tons ${tip(L.cor, 'Cor')} e o estilo ${tip(L.estilo, 'Estilo')}. ` +
+      `O editorial foi feito ${prep} ${tip(L.locacao, 'Locação')} e transmite a sensação de ${tip(L.sensacao, 'Sensação')}. ` +
       `Foto tirada por uma ${camera}.` +
       `<span class="block mt-2 pt-2 border-t border-primary/10 text-[0.6rem] text-on-surface-variant font-normal not-italic">Tamanho: 2:3 (vertical/retrato)</span>`;
 
     // Plain text version for clipboard (works well in Gemini)
     const promptPT_plain =
-      `Editorial de moda hiper-realista com ${L.modelo} em alta definicao, ` +
+      `Editorial de moda hiper-realista com ${L.modelo} em alta definição, ` +
       `vestindo ${L.produto} com caimento e texturas realistas. ` +
-      `O tecido das roupas sera nos tons ${L.cor} e o estilo ${L.estilo}. ` +
-      `O editorial foi feito ${prep} ${L.locacao} e transmite a sensacao de ${L.sensacao}. ` +
+      `O tecido das roupas será nos tons ${L.cor} e o estilo ${L.estilo}. ` +
+      `O editorial foi feito ${prep} ${L.locacao} e transmite a sensação de ${L.sensacao}. ` +
       `Foto tirada por uma ${camera}. Tamanho: 2:3`;
 
     // Show PT version to user (with HTML formatting)
@@ -480,8 +502,8 @@ const Quiz = {
       estilo: 'Estilo',
       cor: 'Cor',
       modelo: 'Modelo',
-      locacao: 'Locacao',
-      sensacao: 'Sensacao'
+      locacao: 'Locação',
+      sensacao: 'Sensação'
     };
 
     choicesContainer.innerHTML = Object.entries(categories).map(([key, label], i) =>
@@ -581,6 +603,44 @@ const Quiz = {
       setTimeout(() => {
         btn.classList.remove('copied');
         label.textContent = 'COPIAR';
+      }, 2500);
+    }
+  },
+
+  /**
+   * Share via WhatsApp
+   */
+  _shareWhatsApp() {
+    const firstName = this.userData.nome ? this.userData.nome.split(' ')[0] : '';
+    const text = `Acabei de criar minha imagem de moda com IA na Cápsula SENAC RJ + Rio Fashion Week 2026! 💜✨\n\nCrie a sua também: https://www.ourspace.com.br/rfw-quiz`;
+    const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  },
+
+  /**
+   * Share via Instagram (opens instagram app / link to tag)
+   */
+  _shareInstagram() {
+    // Instagram doesn't accept direct share URLs. Copy text and instruct.
+    const text = `Acabei de criar minha imagem de moda com IA na Cápsula SENAC RJ + Rio Fashion Week 2026! 💜✨ @ourspace.br @senacrj #RFW2026`;
+    Utils.copyToClipboard(text);
+    alert('Texto copiado! Cole no seu Stories ou post do Instagram e marque @ourspace.br e @senacrj 💜');
+    window.open('https://www.instagram.com/', '_blank');
+  },
+
+  /**
+   * Copy share link
+   */
+  async _shareLink() {
+    const success = await Utils.copyToClipboard('https://www.ourspace.com.br/rfw-quiz');
+    const btn = Utils.$('#btn-share-link');
+    const label = Utils.$('#share-link-label');
+    if (success && label) {
+      label.textContent = '✓ Copiado!';
+      btn.classList.add('bg-primary', 'text-white');
+      setTimeout(() => {
+        label.textContent = 'Copiar Link';
+        btn.classList.remove('bg-primary', 'text-white');
       }, 2500);
     }
   },

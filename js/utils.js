@@ -108,7 +108,7 @@ const Utils = {
     'Preparando o editorial...',
     'Montando o look na passarela...',
     'Finalizando os detalhes...',
-    'Criando algo unico para voce...'
+    'Criando algo único para você...'
   ],
 
   /**
