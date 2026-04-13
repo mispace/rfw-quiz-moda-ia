@@ -173,14 +173,6 @@ const Quiz = {
     // New prompt button
     Utils.$('#btn-novo').addEventListener('click', () => this._restart());
 
-    // Share buttons
-    const btnWhats = Utils.$('#btn-share-whatsapp');
-    if (btnWhats) btnWhats.addEventListener('click', () => this._shareWhatsApp());
-    const btnInsta = Utils.$('#btn-share-instagram');
-    if (btnInsta) btnInsta.addEventListener('click', () => this._shareInstagram());
-    const btnLink = Utils.$('#btn-share-link');
-    if (btnLink) btnLink.addEventListener('click', () => this._shareLink());
-
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.currentStep > 0 && this.currentStep <= 4) {
@@ -255,11 +247,11 @@ const Quiz = {
       const imgTopIds = ['mulher-alienigena'];
       const imgClass = 'option-image' + (imgTopIds.includes(option.id) ? ' img-top' : '');
 
+      // Fallback emoji aparece APENAS se img falhar (via CSS :has ou JS onerror)
       card.innerHTML = `
-        <div class="option-placeholder">${option.emoji}</div>
         <img class="${imgClass}" src="${imgSrc}" alt="${option.label}" loading="eager" decoding="async" fetchpriority="high"
-             onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';"
-             onload="this.previousElementSibling.style.display='none';">
+             onerror="this.parentElement.querySelector('.option-placeholder').style.display='flex'; this.remove();">
+        <div class="option-placeholder" style="display:none;">${option.emoji}</div>
         <div class="option-label">${option.label}</div>
         <div class="check-overlay">
           <div class="check-icon">
@@ -603,44 +595,6 @@ const Quiz = {
       setTimeout(() => {
         btn.classList.remove('copied');
         label.textContent = 'COPIAR';
-      }, 2500);
-    }
-  },
-
-  /**
-   * Share via WhatsApp
-   */
-  _shareWhatsApp() {
-    const firstName = this.userData.nome ? this.userData.nome.split(' ')[0] : '';
-    const text = `Acabei de criar minha imagem de moda com IA na Cápsula SENAC RJ + Rio Fashion Week 2026! 💜✨\n\nCrie a sua também: https://www.ourspace.com.br/rfw-quiz`;
-    const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
-  },
-
-  /**
-   * Share via Instagram (opens instagram app / link to tag)
-   */
-  _shareInstagram() {
-    // Instagram doesn't accept direct share URLs. Copy text and instruct.
-    const text = `Acabei de criar minha imagem de moda com IA na Cápsula SENAC RJ + Rio Fashion Week 2026! 💜✨ @ourspace.br @senacrj #RFW2026`;
-    Utils.copyToClipboard(text);
-    alert('Texto copiado! Cole no seu Stories ou post do Instagram e marque @ourspace.br e @senacrj 💜');
-    window.open('https://www.instagram.com/', '_blank');
-  },
-
-  /**
-   * Copy share link
-   */
-  async _shareLink() {
-    const success = await Utils.copyToClipboard('https://www.ourspace.com.br/rfw-quiz');
-    const btn = Utils.$('#btn-share-link');
-    const label = Utils.$('#share-link-label');
-    if (success && label) {
-      label.textContent = '✓ Copiado!';
-      btn.classList.add('bg-primary', 'text-white');
-      setTimeout(() => {
-        label.textContent = 'Copiar Link';
-        btn.classList.remove('bg-primary', 'text-white');
       }, 2500);
     }
   },

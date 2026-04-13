@@ -230,13 +230,16 @@
     }
 
     .option-placeholder {
-      flex: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 1.8rem);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
-      min-height: 3rem;
-      background: linear-gradient(135deg, rgba(100,72,178,0.06) 0%, rgba(160,45,112,0.04) 50%, rgba(0,93,167,0.06) 100%);
+      background: linear-gradient(135deg, rgba(100,72,178,0.15) 0%, rgba(160,45,112,0.1) 50%, rgba(0,93,167,0.15) 100%);
     }
     .option-image {
       position: absolute;
@@ -246,6 +249,7 @@
       height: calc(100% - 1.8rem);
       object-fit: cover;
       object-position: center;
+      background: linear-gradient(135deg, rgba(100,72,178,0.08) 0%, rgba(160,45,112,0.05) 50%, rgba(0,93,167,0.08) 100%);
     }
     .option-image.img-top {
       object-position: top;
@@ -515,18 +519,18 @@
       <!-- TopAppBar -->
       <header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-5 h-14 bg-white/70 backdrop-blur-xl shadow-glass border-b border-white/40">
         <button id="btn-voltar" aria-label="Voltar"
-                class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary font-body text-[0.6rem] font-bold uppercase tracking-[0.1em] hover:bg-primary hover:text-white active:scale-95 transition-all shadow-sm">
-          <span class="material-symbols-rounded text-base">arrow_back</span>
-          <span class="hidden sm:inline">Voltar</span>
+                class="flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary font-body text-[0.55rem] md:text-[0.6rem] font-bold uppercase tracking-[0.08em] hover:bg-primary hover:text-white active:scale-95 transition-all shadow-sm shrink-0">
+          <span class="material-symbols-rounded text-sm md:text-base">arrow_back</span>
+          <span class="hidden md:inline">Voltar</span>
         </button>
-        <div class="flex items-center gap-2">
-          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">Rio Fashion Week</span>
-          <span class="text-outline-variant text-[0.5rem]">|</span>
-          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-primary uppercase">SENAC CAPSULA</span>
-          <span class="text-outline-variant text-[0.5rem]">|</span>
-          <span class="font-headline text-[0.55rem] font-bold tracking-[0.15em] text-on-surface-variant uppercase">OUR SPACE</span>
+        <div class="flex items-center gap-1 md:gap-2 whitespace-nowrap overflow-hidden">
+          <span class="font-headline text-[0.4rem] md:text-[0.55rem] font-bold tracking-[0.1em] md:tracking-[0.15em] text-on-surface-variant uppercase">RFW 2026</span>
+          <span class="text-outline-variant text-[0.4rem]">|</span>
+          <span class="font-headline text-[0.4rem] md:text-[0.55rem] font-bold tracking-[0.1em] md:tracking-[0.15em] text-primary uppercase">CÁPSULA SENAC</span>
+          <span class="text-outline-variant text-[0.4rem]">|</span>
+          <span class="font-headline text-[0.4rem] md:text-[0.55rem] font-bold tracking-[0.1em] md:tracking-[0.15em] text-on-surface-variant uppercase">OUR SPACE</span>
         </div>
-        <div class="w-10 h-10"></div>
+        <div class="w-8 md:w-10 h-10"></div>
       </header>
 
       <!-- Step NavBar (6 steps) -->
@@ -781,26 +785,26 @@
         <div class="w-full bg-gradient-to-r from-primary/5 via-tertiary/5 to-secondary/5 backdrop-blur-xl rounded-xl p-4 md:p-5 border border-primary/10 mb-4 result-fade-in" style="animation-delay: 0.9s;">
           <div class="flex flex-col items-center text-center gap-2 mb-3">
             <div class="flex items-center gap-2">
-              <span class="material-symbols-rounded text-primary text-base" style="font-variation-settings:'FILL' 1;">share</span>
+              <span class="material-symbols-rounded text-primary text-base" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
               <h3 class="font-headline text-sm md:text-base font-extrabold text-on-surface">Compartilhe sua experiência!</h3>
             </div>
-            <p class="font-body text-[0.65rem] md:text-xs text-on-surface-variant max-w-md">
-              Mostre para o mundo sua criação de moda com IA. Marque <strong class="text-primary">@ourspace.br</strong> e <strong class="text-primary">@senacrj</strong> nas suas redes!
+            <p class="font-body text-[0.65rem] md:text-xs text-on-surface-variant max-w-md leading-relaxed">
+              Poste sua imagem no Stories e marque a gente! Queremos ver sua criação de moda com IA.
             </p>
           </div>
-          <div class="flex flex-wrap items-center justify-center gap-2">
-            <button id="btn-share-whatsapp" class="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#25D366] text-white font-body text-[0.6rem] font-bold uppercase tracking-wide hover:scale-105 active:scale-95 transition-transform shadow-sm">
-              <span class="material-symbols-rounded text-sm">chat</span>
-              WhatsApp
-            </button>
-            <button id="btn-share-instagram" class="flex items-center gap-1.5 px-3 py-2 rounded-full bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white font-body text-[0.6rem] font-bold uppercase tracking-wide hover:scale-105 active:scale-95 transition-transform shadow-sm">
-              <span class="material-symbols-rounded text-sm">photo_camera</span>
-              Instagram
-            </button>
-            <button id="btn-share-link" class="flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/70 border border-primary/30 text-primary font-body text-[0.6rem] font-bold uppercase tracking-wide hover:bg-primary hover:text-white active:scale-95 transition-all shadow-sm">
-              <span class="material-symbols-rounded text-sm">link</span>
-              <span id="share-link-label">Copiar Link</span>
-            </button>
+          <div class="flex flex-wrap items-center justify-center gap-1.5 md:gap-2">
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/70 border border-primary/25 font-body text-[0.6rem] md:text-[0.65rem] font-bold text-primary">
+              <span class="material-symbols-rounded text-xs" style="font-variation-settings:'FILL' 1;">alternate_email</span>ourspace.br
+            </span>
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/70 border border-primary/25 font-body text-[0.6rem] md:text-[0.65rem] font-bold text-primary">
+              <span class="material-symbols-rounded text-xs" style="font-variation-settings:'FILL' 1;">alternate_email</span>senacrj
+            </span>
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/70 border border-primary/25 font-body text-[0.6rem] md:text-[0.65rem] font-bold text-primary">
+              <span class="material-symbols-rounded text-xs" style="font-variation-settings:'FILL' 1;">alternate_email</span>mispace
+            </span>
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/70 border border-primary/25 font-body text-[0.6rem] md:text-[0.65rem] font-bold text-primary">
+              <span class="material-symbols-rounded text-xs" style="font-variation-settings:'FILL' 1;">alternate_email</span>riofashionweek
+            </span>
           </div>
         </div>
 
