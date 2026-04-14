@@ -57,14 +57,14 @@ const Quiz = {
       options: [
         { id: 'tons-neutros', label: 'Tons Neutros', value: 'neutral tones palette', emoji: '🤍' },
         { id: 'tons-pasteis', label: 'Tons Pastéis', value: 'soft pastel colors', emoji: '🩷' },
-        { id: 'monocromatico', label: 'Monocromático', value: 'monochromatic single-tone palette', emoji: '⬛' },
         { id: 'tons-vibrantes', label: 'Tons Vibrantes', value: 'vibrant bold colors', emoji: '🌈' },
         { id: 'tons-terrosos', label: 'Tons Terrosos', value: 'earthy warm tones', emoji: '🤎' },
         { id: 'neutros-quentes', label: 'Neutros Quentes', value: 'warm neutral tones', emoji: '🧡' },
-        { id: 'pasteis-terrosos', label: 'Pastéis Terrosos', value: 'dusty earthy pastels', emoji: '🌾' },
         { id: 'metalicos', label: 'Metálicos', value: 'metallic gold silver chrome tones', emoji: '🪙' },
-        { id: 'iridescente', label: 'Iridescente', value: 'iridescent holographic shifting colors', emoji: '🫧' },
-        { id: 'cores-primarias', label: 'Cores Primárias', value: 'bold primary colors red blue yellow', emoji: '🔴' }
+        { id: 'amarelo-laranja', label: 'Amarelo e Laranja', value: 'yellow and orange warm color palette', emoji: '🟡' },
+        { id: 'azul', label: 'Azul', value: 'blue color palette with various blue shades', emoji: '🔵' },
+        { id: 'preto-branco', label: 'Preto e Branco', value: 'black and white monochromatic palette', emoji: '⚫' },
+        { id: 'estampa-poa', label: 'Estampa Poá', value: 'black and white polka dot pattern print', emoji: '⚪' }
       ]
     },
     {
@@ -128,19 +128,19 @@ const Quiz = {
     this._bindEvents();
     this._createParticles();
     this._initMouseTrail();
-    this._preloadAllImages();
+    // Pre-carregar so o primeiro passo imediatamente
+    this._preloadStep(0);
   },
 
   /**
-   * Pre-load all quiz images in the background so they're cached
-   * when the user reaches each step. Fixes mobile loading issues.
+   * Pre-load images of a specific step (avoids saturating mobile connection)
    */
-  _preloadAllImages() {
-    this.steps.forEach(step => {
-      step.options.forEach(option => {
-        const img = new Image();
-        img.src = `assets/images/${step.key}/${option.id}.jpg`;
-      });
+  _preloadStep(stepIndex) {
+    if (stepIndex < 0 || stepIndex >= this.steps.length) return;
+    const step = this.steps[stepIndex];
+    step.options.forEach(option => {
+      const img = new Image();
+      img.src = `assets/images/${step.key}/${option.id}.jpg`;
     });
   },
 
@@ -228,6 +228,11 @@ const Quiz = {
 
     // Update step nav
     this._updateStepNav(step);
+
+    // Pre-load next step images in background (reduces mobile bottleneck)
+    if (step < this.TOTAL_STEPS) {
+      setTimeout(() => this._preloadStep(step), 800);
+    }
 
     // Build options grid
     const grid = Utils.$('#options-grid');

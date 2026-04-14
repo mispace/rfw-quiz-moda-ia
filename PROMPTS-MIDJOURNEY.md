@@ -257,18 +257,7 @@ fashion color mood, pastel palette inspiration, cotton candy colors, powdery tex
 color concept image, pastel spectrum, soft sorbet hues layered on white, gentle gradients, spring freshness, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
 ```
 
-### 3.3 Monocromatico
-```
-abstract color palette swatch, monochromatic tones, single color in multiple shades from light to dark, tonal depth, fabric swatches arranged in gradient, minimalist editorial photography --ar 1:1 --style raw --v 6.1
-```
-```
-fashion color mood, monochromatic palette, all-black or all-white concept, varying textures in single tone, sophisticated depth, editorial quality --ar 1:1 --style raw --v 6.1
-```
-```
-color concept image, monochrome spectrum, one hue from palest tint to deepest shade, layered fabric textures, elegant restraint, ultra high resolution --ar 1:1 --style raw --v 6.1
-```
-
-### 3.4 Tons Vibrantes
+### 3.3 Tons Vibrantes
 ```
 abstract color palette swatch, vibrant bold tones, electric blue, hot pink, citrus yellow, emerald green fabric swatches, high energy composition, sharp studio lighting --ar 1:1 --style raw --v 6.1
 ```
@@ -279,7 +268,7 @@ fashion color mood, vibrant palette inspiration, saturated jewel tones, rich fab
 color concept image, vibrant spectrum, intense saturated hues, color-blocking arrangement, pop art energy, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
 ```
 
-### 3.5 Tons Terrosos
+### 3.4 Tons Terrosos
 ```
 abstract color palette swatch, earthy tones, terracotta, burnt sienna, olive green, warm brown, clay fabric swatches, organic composition, warm natural lighting --ar 1:1 --style raw --v 6.1
 ```
@@ -290,7 +279,7 @@ fashion color mood, earthy palette inspiration, desert sand, rust, sage green, c
 color concept image, earth tone spectrum, organic hues from soil to clay, natural fiber textures, warm comfort, professional color reference, ultra high resolution --ar 1:1 --style raw --v 6.1
 ```
 
-### 3.6 Neutros Quentes
+### 3.5 Neutros Quentes
 ```
 abstract color palette swatch, warm neutral tones, camel, warm beige, honey, soft cognac, golden cream fabric swatches, cozy warmth, soft golden lighting --ar 1:1 --style raw --v 6.1
 ```
@@ -301,18 +290,7 @@ fashion color mood, warm neutrals palette, golden hour tones, amber and wheat hu
 color concept image, warm neutral spectrum, from cream to caramel, sun-kissed tones, luxurious warmth, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
 ```
 
-### 3.7 Pasteis Terrosos
-```
-abstract color palette swatch, dusty earthy pastels, muted rose, sage, dusty peach, soft terracotta, warm mauve fabric swatches, gentle organic warmth, soft lighting --ar 1:1 --style raw --v 6.1
-```
-```
-fashion color mood, earthy pastel palette, faded desert tones, dried flower hues, soft clay and blush, natural elegance, editorial quality --ar 1:1 --style raw --v 6.1
-```
-```
-color concept image, dusty pastel spectrum, muted warm tones, sun-bleached organic hues, quiet beauty, professional color reference, ultra high resolution --ar 1:1 --style raw --v 6.1
-```
-
-### 3.8 Metalicos
+### 3.6 Metalicos
 ```
 abstract color palette swatch, metallic tones, liquid gold, brushed silver, rose gold, copper, chrome fabric swatches, reflective surfaces, dramatic studio lighting --ar 1:1 --style raw --v 6.1
 ```
@@ -323,26 +301,48 @@ fashion color mood, metallic palette inspiration, holographic shimmer, iridescen
 color concept image, metallic spectrum, from warm gold to cool platinum, reflective textile swatches, opulent shine, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
 ```
 
-### 3.9 Iridescente
+### 3.7 Amarelo e Laranja
 ```
-abstract color palette swatch, iridescent shifting tones, opal, mother of pearl, aurora borealis colors, prismatic fabric swatches, light-refracting surfaces, magical luminosity --ar 1:1 --style raw --v 6.1
-```
-```
-fashion color mood, iridescent palette inspiration, color-shifting holographic materials, rainbow reflections on white, dreamlike prismatic effect, editorial quality --ar 1:1 --style raw --v 6.1
+abstract color palette swatch, yellow and orange warm tones, sunflower yellow, tangerine, amber, saffron fabric swatches, warm vibrant composition, golden studio lighting --ar 1:1 --style raw --v 6.1
 ```
 ```
-color concept image, iridescent spectrum, pearl to prismatic shift, light-catching surfaces, ethereal color play, professional color reference, ultra high resolution --ar 1:1 --style raw --v 6.1
+fashion color mood, yellow and orange palette inspiration, citrus warmth, mustard and coral tones, sunny energy, retro summer vibe, editorial quality --ar 1:1 --style raw --v 6.1
+```
+```
+color concept image, yellow and orange spectrum, from butter to burnt orange, warm pigment layers, radiant happiness, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
 ```
 
-### 3.10 Cores Primarias
+### 3.8 Azul
 ```
-abstract color palette swatch, primary colors, pure red, royal blue, bright yellow, bold graphic arrangement, high contrast, Mondrian-inspired composition, sharp studio lighting --ar 1:1 --style raw --v 6.1
-```
-```
-fashion color mood, primary palette inspiration, saturated red, blue and yellow fabric blocks, bold pop art energy, graphic impact, editorial quality --ar 1:1 --style raw --v 6.1
+abstract color palette swatch, blue tones palette, navy, cobalt, sky blue, turquoise, indigo fabric swatches layered artfully, cool sophisticated composition, studio lighting --ar 1:1 --style raw --v 6.1
 ```
 ```
-color concept image, primary color spectrum, pure pigment tones, color-blocked arrangement, playful boldness, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
+fashion color mood, blue palette inspiration, all shades of blue from powder to midnight, calm elegance, oceanic serenity, editorial quality photography --ar 1:1 --style raw --v 6.1
+```
+```
+color concept image, blue spectrum, from ice blue to deep navy, tonal depth in single hue family, refined elegance, professional color reference, ultra high resolution --ar 1:1 --style raw --v 6.1
+```
+
+### 3.9 Preto e Branco
+```
+abstract color palette swatch, black and white tones, pure ivory white, jet black, charcoal, cream, pearl fabric swatches, high contrast minimalist composition, dramatic studio lighting --ar 1:1 --style raw --v 6.1
+```
+```
+fashion color mood, black and white palette inspiration, monochrome elegance, stark contrast, timeless sophistication, classic editorial quality --ar 1:1 --style raw --v 6.1
+```
+```
+color concept image, black and white spectrum, pure contrast tones, clean graphic arrangement, architectural minimalism, ultra detailed, professional color reference --ar 1:1 --style raw --v 6.1
+```
+
+### 3.10 Estampa Poá
+```
+abstract pattern swatch, classic black and white polka dot print pattern, vintage retro style, white background with evenly spaced black dots, fabric texture detail, fashion pattern reference --ar 1:1 --style raw --v 6.1
+```
+```
+fashion pattern mood, black and white polka dot estampa, timeless feminine print, various dot sizes, flowing fabric, retro chic aesthetic, editorial quality --ar 1:1 --style raw --v 6.1
+```
+```
+textile pattern image, polka dot print in black and white, classic fashion print, silk or chiffon fabric with dotted pattern, playful elegance, professional pattern reference, ultra detailed --ar 1:1 --style raw --v 6.1
 ```
 
 ---
