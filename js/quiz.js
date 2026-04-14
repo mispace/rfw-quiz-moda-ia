@@ -17,6 +17,23 @@ const Quiz = {
   // Quiz data — 6 passos, 10 opcoes cada
   steps: [
     {
+      key: 'modelo',
+      title: 'QUEM VESTE?',
+      subtitle: 'Escolha quem vai usar sua criação.',
+      options: [
+        { id: 'mulher-negra', label: 'Mulher Negra', value: 'beautiful Black woman', emoji: '👩🏿' },
+        { id: 'homem-negro', label: 'Homem Negro', value: 'handsome Black man', emoji: '👨🏿' },
+        { id: 'mulher-branca', label: 'Mulher Branca', value: 'beautiful Caucasian woman', emoji: '👩🏻' },
+        { id: 'homem-branco', label: 'Homem Branco', value: 'handsome Caucasian man', emoji: '👨🏻' },
+        { id: 'mulher-oriental', label: 'Mulher Oriental', value: 'beautiful East Asian woman', emoji: '👩🏻' },
+        { id: 'homem-oriental', label: 'Homem Oriental', value: 'handsome East Asian man', emoji: '👨🏻' },
+        { id: 'mulher-alienigena', label: 'Mulher Alienígena', value: 'alien woman with blue-green skin tone and large dark eyes, full body editorial pose', emoji: '👽' },
+        { id: 'homem-alienigena', label: 'Homem Alienígena', value: 'alien man with blue-green skin tone and large dark eyes, full body editorial pose', emoji: '👽' },
+        { id: 'mulher-albina', label: 'Mulher Albina', value: 'beautiful albino woman with white hair', emoji: '🤍' },
+        { id: 'homem-albino', label: 'Homem Albino', value: 'handsome albino man with white hair', emoji: '🤍' }
+      ]
+    },
+    {
       key: 'produto',
       title: 'ESCOLHA O PRODUTO',
       subtitle: 'Qual peça de roupa você quer criar?',
@@ -65,23 +82,6 @@ const Quiz = {
         { id: 'azul', label: 'Azul', value: 'blue color palette with various blue shades', emoji: '🔵' },
         { id: 'preto-branco', label: 'Preto e Branco', value: 'black and white monochromatic palette', emoji: '⚫' },
         { id: 'estampa-poa', label: 'Estampa Poá', value: 'black and white polka dot pattern print', emoji: '⚪' }
-      ]
-    },
-    {
-      key: 'modelo',
-      title: 'QUEM VESTE?',
-      subtitle: 'Escolha quem vai usar sua criação.',
-      options: [
-        { id: 'mulher-negra', label: 'Mulher Negra', value: 'beautiful Black woman', emoji: '👩🏿' },
-        { id: 'homem-negro', label: 'Homem Negro', value: 'handsome Black man', emoji: '👨🏿' },
-        { id: 'mulher-branca', label: 'Mulher Branca', value: 'beautiful Caucasian woman', emoji: '👩🏻' },
-        { id: 'homem-branco', label: 'Homem Branco', value: 'handsome Caucasian man', emoji: '👨🏻' },
-        { id: 'mulher-oriental', label: 'Mulher Oriental', value: 'beautiful East Asian woman', emoji: '👩🏻' },
-        { id: 'homem-oriental', label: 'Homem Oriental', value: 'handsome East Asian man', emoji: '👨🏻' },
-        { id: 'mulher-alienigena', label: 'Mulher Alienígena', value: 'alien woman with blue-green skin tone and large dark eyes, full body editorial pose', emoji: '👽' },
-        { id: 'homem-alienigena', label: 'Homem Alienígena', value: 'alien man with blue-green skin tone and large dark eyes, full body editorial pose', emoji: '👽' },
-        { id: 'mulher-albina', label: 'Mulher Albina', value: 'beautiful albino woman with white hair', emoji: '🤍' },
-        { id: 'homem-albino', label: 'Homem Albino', value: 'handsome albino man with white hair', emoji: '🤍' }
       ]
     },
     {
