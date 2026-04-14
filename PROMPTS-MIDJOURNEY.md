@@ -235,15 +235,15 @@ fashion concept image, street style mood, layered hoodies, chunky chains, primar
 
 ## 3. CARTELA DE COR (10 variaveis)
 
-### 3.1 Tons Neutros
+### 3.1 Tons Neutros (cinzas azulados)
 ```
-abstract color palette swatch, neutral tones, beige, cream, soft gray, white, and taupe fabric swatches layered artfully, soft studio lighting, minimalist composition, luxury textile photography --ar 1:1 --style raw --v 6.1
-```
-```
-fashion color mood, neutral palette inspiration, sand, ivory, dove gray, and oatmeal tones, draped fabrics overlapping, serene composition, editorial quality photography --ar 1:1 --style raw --v 6.1
+abstract color palette swatch, cool neutral grays, bluish-gray tones, charcoal, slate, steel gray and silver fabric swatches, tones between black and white, minimalist composition, studio lighting --ar 1:1 --style raw --v 6.1
 ```
 ```
-color concept image, neutral spectrum, warm whites to cool grays, fabric texture gradient, elegant restraint, professional color reference, ultra high resolution --ar 1:1 --style raw --v 6.1
+fashion color mood, cool gray palette inspiration, slate, pewter, dove gray, bluish-gray tones, sophisticated monochrome spectrum, editorial quality photography --ar 1:1 --style raw --v 6.1
+```
+```
+color concept image, cool gray neutral spectrum, bluish undertones between black and white, charcoal to silver, layered fabric textures, elegant restraint, ultra high resolution --ar 1:1 --style raw --v 6.1
 ```
 
 ### 3.2 Tons Pasteis
@@ -279,15 +279,15 @@ fashion color mood, earthy palette inspiration, desert sand, rust, sage green, c
 color concept image, earth tone spectrum, organic hues from soil to clay, natural fiber textures, warm comfort, professional color reference, ultra high resolution --ar 1:1 --style raw --v 6.1
 ```
 
-### 3.5 Neutros Quentes
+### 3.5 Roxo
 ```
-abstract color palette swatch, warm neutral tones, camel, warm beige, honey, soft cognac, golden cream fabric swatches, cozy warmth, soft golden lighting --ar 1:1 --style raw --v 6.1
-```
-```
-fashion color mood, warm neutrals palette, golden hour tones, amber and wheat hues, cashmere textures, inviting warmth, editorial quality photography --ar 1:1 --style raw --v 6.1
+abstract color palette swatch, purple and violet tones, lavender, amethyst, plum, magenta fabric swatches layered artfully, rich royal composition, studio lighting --ar 1:1 --style raw --v 6.1
 ```
 ```
-color concept image, warm neutral spectrum, from cream to caramel, sun-kissed tones, luxurious warmth, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
+fashion color mood, purple palette inspiration, all shades of violet from lilac to deep aubergine, mystical elegance, regal sophistication, editorial quality photography --ar 1:1 --style raw --v 6.1
+```
+```
+color concept image, purple spectrum, from pale lavender to deep plum, tonal depth in violet hue family, luxurious mystery, professional color reference, ultra detailed --ar 1:1 --style raw --v 6.1
 ```
 
 ### 3.6 Metalicos

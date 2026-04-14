@@ -72,14 +72,14 @@ const Quiz = {
       title: 'ESCOLHA A CARTELA DE COR',
       subtitle: 'Qual paleta de cores você imagina?',
       options: [
-        { id: 'tons-neutros', label: 'Tons Neutros', value: 'neutral tones palette', emoji: '🤍' },
+        { id: 'tons-neutros', label: 'Tons Neutros', value: 'cool neutral grays palette with bluish-gray tones, charcoal, slate, steel gray and silver shades between black and white', emoji: '🩶' },
         { id: 'tons-pasteis', label: 'Tons Pastéis', value: 'soft pastel colors', emoji: '🩷' },
         { id: 'tons-vibrantes', label: 'Tons Vibrantes', value: 'vibrant bold colors', emoji: '🌈' },
         { id: 'tons-terrosos', label: 'Tons Terrosos', value: 'earthy warm tones', emoji: '🤎' },
-        { id: 'neutros-quentes', label: 'Neutros Quentes', value: 'warm neutral tones', emoji: '🧡' },
         { id: 'metalicos', label: 'Metálicos', value: 'metallic gold silver chrome tones', emoji: '🪙' },
         { id: 'amarelo-laranja', label: 'Amarelo e Laranja', value: 'yellow and orange warm color palette', emoji: '🟡' },
         { id: 'azul', label: 'Azul', value: 'blue color palette with various blue shades', emoji: '🔵' },
+        { id: 'roxo', label: 'Roxo', value: 'purple and violet color palette with lavender and magenta shades', emoji: '🟣' },
         { id: 'preto-branco', label: 'Preto e Branco', value: 'black and white monochromatic palette', emoji: '⚫' },
         { id: 'estampa-poa', label: 'Estampa Poá', value: 'black and white polka dot pattern print', emoji: '⚪' }
       ]
