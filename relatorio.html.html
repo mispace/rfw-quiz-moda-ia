@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENAC Cápsula RJ — Relatório RFW 2026 · OURSPACE</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0e1117;color:#d4cfc6;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:960px;margin:0 auto;padding:0 32px;}
+.hero{background:linear-gradient(160deg,#12151a 0%,#1a2235 45%,#12151a 100%);padding:72px 0 60px;border-bottom:1px solid rgba(184,192,204,.07);position:relative;overflow:hidden;}
+.hero::before{content:'SENAC CAPSULA RJ';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Cormorant Garamond',serif;font-size:90px;letter-spacing:14px;color:rgba(184,192,204,.025);white-space:nowrap;pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(165,200,59,.08);border:1px solid rgba(165,200,59,.22);border-radius:20px;padding:5px 14px;margin-bottom:20px;}
+.gdot{width:7px;height:7px;border-radius:50%;background:#a5c83b;box-shadow:0 0 9px rgba(165,200,59,.65);}
+.badge span{font-family:'Space Mono',monospace;font-size:9px;color:#a5c83b;letter-spacing:.09em;}
+h1{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:300;line-height:1.08;color:#faf8f5;margin-bottom:8px;}
+h1 em{font-style:italic;color:#b8c0cc;}
+.hero-sub{font-size:13px;color:#8891a0;margin-bottom:32px;}
+.al{height:1px;background:linear-gradient(90deg,rgba(165,200,59,.55),transparent);width:110px;margin:22px 0;}
+.hero-meta{display:flex;gap:32px;flex-wrap:wrap;}
+.mi{display:flex;flex-direction:column;gap:3px;}
+.ml{font-family:'Space Mono',monospace;font-size:8px;color:#8891a0;letter-spacing:.13em;text-transform:uppercase;}
+.mv{font-size:13px;color:#d4cfc6;}
+.sec{padding:60px 0;border-bottom:1px solid rgba(184,192,204,.05);}
+.sec.alt{background:rgba(15,18,26,.5);}
+.ey{font-family:'Space Mono',monospace;font-size:8px;color:#a5c83b;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:9px;}
+.ey::after{content:'';height:1px;background:rgba(165,200,59,.22);width:50px;}
+h2{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:400;color:#faf8f5;margin-bottom:32px;line-height:1.2;}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:660px){.kpi-grid,.g2,.g2c,.g3,.rep-grid,.ins-grid{grid-template-columns:1fr !important;}}
+.kpi{background:rgba(28,32,40,.8);border:1px solid rgba(184,192,204,.08);border-radius:14px 12px 16px 10px;padding:24px 20px;position:relative;overflow:hidden;}
+.kpi:hover{border-color:rgba(165,200,59,.22);}
+.kpi::before{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at top left,rgba(165,200,59,.045),transparent 65%);}
+.kpi-n{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:#faf8f5;line-height:1;margin-bottom:5px;}
+.kpi-l{font-size:12px;color:#8891a0;}
+.kpi-s{font-family:'Space Mono',monospace;font-size:8px;color:rgba(165,200,59,.65);margin-top:6px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+.g2c{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.cbox{background:rgba(22,26,36,.7);border:1px solid rgba(184,192,204,.08);border-radius:14px;padding:24px;}
+.ct{font-family:'Space Mono',monospace;font-size:9px;color:#8891a0;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+.tl{position:relative;padding-left:22px;}
+.tl::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,rgba(165,200,59,.45),rgba(165,200,59,.04));}
+.tli{position:relative;margin-bottom:22px;}
+.tli:last-child{margin-bottom:0;}
+.tld{position:absolute;left:-22px;top:4px;width:11px;height:11px;border-radius:50%;background:#a5c83b;box-shadow:0 0 8px rgba(165,200,59,.4);}
+.tl-step{font-family:'Space Mono',monospace;font-size:8px;color:#a5c83b;letter-spacing:.09em;margin-bottom:3px;}
+.tl-title{font-size:14px;color:#d4cfc6;font-weight:500;margin-bottom:2px;}
+.tl-desc{font-size:11px;color:#8891a0;line-height:1.55;}
+.tag{display:inline-block;background:rgba(184,192,204,.07);border:1px solid rgba(184,192,204,.1);border-radius:4px;padding:3px 8px;font-family:'Space Mono',monospace;font-size:8px;color:#8891a0;letter-spacing:.06em;margin:0 5px 6px 0;}
+.rep-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.rep{background:rgba(22,26,36,.6);border:1px solid rgba(184,192,204,.07);border-radius:12px;padding:18px 12px;text-align:center;}
+.rep-p{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#faf8f5;}
+.rep-l{font-size:10px;color:#8891a0;margin-top:4px;line-height:1.45;}
+.quote{background:rgba(22,26,36,.55);border-left:2px solid rgba(165,200,59,.4);padding:24px 28px;border-radius:0 14px 14px 0;margin:32px 0 0;}
+.qt{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#faf8f5;line-height:1.55;margin-bottom:11px;}
+.qa{font-family:'Space Mono',monospace;font-size:9px;color:#a5c83b;letter-spacing:.09em;}
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ins{background:rgba(14,17,23,.8);border:1px solid rgba(184,192,204,.06);border-left:2px solid rgba(165,200,59,.32);border-radius:0 12px 12px 0;padding:20px;}
+.ins-title{font-size:13px;color:#faf8f5;font-weight:500;margin-bottom:7px;}
+.ins-text{font-size:12px;color:#8891a0;line-height:1.7;}
+.legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:#8891a0;}
+.leg-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+footer{padding:44px 0;background:#090b0f;border-top:1px solid rgba(184,192,204,.06);}
+.f-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.f-brand{font-family:'Cormorant Garamond',serif;font-size:20px;color:#faf8f5;}
+.f-sub{font-size:12px;color:#8891a0;margin-top:3px;}
+.f-meta{font-family:'Space Mono',monospace;font-size:8px;color:#8891a0;letter-spacing:.09em;text-align:right;line-height:1.9;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="badge"><div class="gdot"></div><span>RELATÓRIO DE ATIVAÇÃO · SENAC CÁPSULA RJ · RFW 2026</span></div>
+    <h1>Crie sua Imagem de<br><em>Moda com IA</em></h1>
+    <p class="hero-sub">Rio Fashion Week 2026 · SENAC Centro de Inovação, Rio de Janeiro</p>
+    <div class="al"></div>
+    <div class="hero-meta">
+      <div class="mi"><span class="ml">Período</span><span class="mv">15 a 18 de Abril de 2026</span></div>
+      <div class="mi"><span class="ml">Parceria</span><span class="mv">SENAC RJ × OURSPACE</span></div>
+      <div class="mi"><span class="ml">Formato</span><span class="mv">Ativação Experiencial com IA</span></div>
+      <div class="mi"><span class="ml">Responsável</span><span class="mv">Michelle Douglas</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap">
+    <div class="ey">Resultado geral</div>
+    <h2>Os números do evento</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-n">58</div><div class="kpi-l">Sessões concluídas com sucesso</div><div class="kpi-s">de 64 tentativas registradas</div></div>
+      <div class="kpi"><div class="kpi-n">116</div><div class="kpi-l">Prompts gerados no total</div><div class="kpi-s">um simplificado e um detalhado por sessão</div></div>
+      <div class="kpi"><div class="kpi-n">48</div><div class="kpi-l">Participantes únicos</div><div class="kpi-s">com pelo menos uma sessão concluída</div></div>
+      <div class="kpi"><div class="kpi-n">4</div><div class="kpi-l">Dias de ativação</div><div class="kpi-s">2 workshops por dia, cerca de 6 por turno</div></div>
+      <div class="kpi"><div class="kpi-n">6</div><div class="kpi-l">Dimensões criativas no quiz</div><div class="kpi-s">modelo, produto, estilo, cor, locação, sensação</div></div>
+      <div class="kpi"><div class="kpi-n">10</div><div class="kpi-l">Estilos editoriais distintos</div><div class="kpi-s">todos foram escolhidos ao menos uma vez</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec alt">
+  <div class="wrap">
+    <div class="ey">O projeto</div>
+    <h2>Democratizar a criação com IA</h2>
+    <div class="g2">
+      <div>
+        <p style="font-size:14px;color:#b8c0cc;line-height:1.85;margin-bottom:16px;">A ativação foi desenvolvida para transformar a criação de prompts em uma experiência visual, intuitiva e acessível para qualquer pessoa, independente de conhecimento técnico.</p>
+        <p style="font-size:14px;color:#b8c0cc;line-height:1.85;">Em vez de digitar texto, os participantes fizeram 6 escolhas visuais que foram convertidas em dois prompts profissionais: um simplificado e um detalhado, prontos para uso em qualquer ferramenta de IA generativa.</p>
+        <div class="al" style="margin:24px 0;"></div>
+        <span class="tag">QUIZ INTERATIVO</span><span class="tag">PROMPT ENGINEERING</span><span class="tag">EDUCAÇÃO</span><span class="tag">MODA × IA</span>
+      </div>
+      <div class="tl">
+        <div class="tli"><div class="tld"></div><div class="tl-step">ETAPA 01</div><div class="tl-title">Modelo</div><div class="tl-desc">Quem veste o look: mulher negra, branca, asiática, albina, homens ou personagem alien</div></div>
+        <div class="tli"><div class="tld"></div><div class="tl-step">ETAPA 02</div><div class="tl-title">Produto de moda</div><div class="tl-desc">Vestido longo, macacão, jaqueta e shorts, calça com blusa e jaqueta, entre outros</div></div>
+        <div class="tli"><div class="tld"></div><div class="tl-step">ETAPA 03</div><div class="tl-title">Estilo editorial</div><div class="tl-desc">Avant-garde, boho chic, romântico, esportivo, futurista tech, vintage e mais</div></div>
+        <div class="tli"><div class="tld"></div><div class="tl-step">ETAPA 04</div><div class="tl-title">Cartela de cores</div><div class="tl-desc">Tons vibrantes, pastéis, terrosos, neutros frios, metálicos, monocromático</div></div>
+        <div class="tli"><div class="tld"></div><div class="tl-step">ETAPA 05</div><div class="tl-title">Locação</div><div class="tl-desc">Passarela, jardim, rooftop, galeria de arte, grafitti, superfície lunar, Marte e mais</div></div>
+        <div class="tli"><div class="tld"></div><div class="tl-step">ETAPA 06</div><div class="tl-title">Sensação desejada</div><div class="tl-desc">Liberdade, felicidade, fantasia, glamour, rebeldia, sofisticação, leveza e mais</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap">
+    <div class="ey">Análise de dados</div>
+    <h2>Padrões de escolha dos participantes</h2>
+    <div class="g2c" style="margin-bottom:20px;">
+      <div class="cbox"><div class="ct">Modelo escolhido</div><div style="position:relative;height:200px;"><canvas id="c-modelo" role="img" aria-label="Modelos escolhidos"></canvas></div><div class="legend" id="leg-modelo"></div></div>
+      <div class="cbox"><div class="ct">Produto de moda — top 6</div><div style="position:relative;height:200px;"><canvas id="c-produto" role="img" aria-label="Produtos escolhidos"></canvas></div><div class="legend" id="leg-produto"></div></div>
+    </div>
+    <div class="g2c" style="margin-bottom:20px;">
+      <div class="cbox"><div class="ct">Estilo editorial — top 6</div><div style="position:relative;height:200px;"><canvas id="c-estilo" role="img" aria-label="Estilos escolhidos"></canvas></div><div class="legend" id="leg-estilo"></div></div>
+      <div class="cbox"><div class="ct">Cartela de cores — top 6</div><div style="position:relative;height:200px;"><canvas id="c-cor" role="img" aria-label="Cores escolhidas"></canvas></div><div class="legend" id="leg-cor"></div></div>
+    </div>
+    <div class="g2c">
+      <div class="cbox"><div class="ct">Locação escolhida — top 6</div><div style="position:relative;height:200px;"><canvas id="c-locacao" role="img" aria-label="Locacoes escolhidas"></canvas></div><div class="legend" id="leg-locacao"></div></div>
+      <div class="cbox"><div class="ct">Sensação desejada</div><div style="position:relative;height:200px;"><canvas id="c-sensacao" role="img" aria-label="Sensacoes desejadas"></canvas></div><div class="legend" id="leg-sensacao"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec alt">
+  <div class="wrap">
+    <div class="ey">Representatividade</div>
+    <h2>Quem os participantes imaginaram</h2>
+    <p style="font-size:14px;color:#8891a0;margin-bottom:28px;max-width:620px;line-height:1.8;">As escolhas de representação resultaram em uma distribuição diversa. Mulheres foram protagonistas em 96% dos prompts, com equilíbrio entre diferentes perfis e até personagens especulativos.</p>
+    <div class="rep-grid">
+      <div class="rep"><div class="rep-p">32.8%</div><div class="rep-l">Mulher Branca<br>19 escolhas</div></div>
+      <div class="rep"><div class="rep-p">22.4%</div><div class="rep-l">Mulher Negra<br>13 escolhas</div></div>
+      <div class="rep"><div class="rep-p">19.0%</div><div class="rep-l">Mulher Asiática<br>11 escolhas</div></div>
+      <div class="rep"><div class="rep-p">12.1%</div><div class="rep-l">Personagem Alien<br>7 escolhas</div></div>
+      <div class="rep"><div class="rep-p">6.9%</div><div class="rep-l">Mulher Albina<br>4 escolhas</div></div>
+      <div class="rep"><div class="rep-p">3.4%</div><div class="rep-l">Homem Negro<br>2 escolhas</div></div>
+      <div class="rep"><div class="rep-p">1.7%</div><div class="rep-l">Homem Asiático<br>1 escolha</div></div>
+      <div class="rep"><div class="rep-p">1.7%</div><div class="rep-l">Homem Albino<br>1 escolha</div></div>
+    </div>
+    <div class="quote">
+      <div class="qt">"Quando pessoas sem viés técnico escolhem livremente, a representatividade aparece de forma natural. A diversidade estava nas escolhas humanas, não no modelo."</div>
+      <div class="qa">Michelle Douglas · OURSPACE</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap">
+    <div class="ey">Aprendizados</div>
+    <h2>O que esse dado revela</h2>
+    <div class="ins-grid">
+      <div class="ins"><div class="ins-title">Dois prompts por sessão</div><div class="ins-text">Cada sessão gerou um prompt simplificado e um prompt detalhado. No total, 116 prompts foram criados a partir das 58 sessões concluídas com sucesso.</div></div>
+      <div class="ins"><div class="ins-title">Sem barreira técnica</div><div class="ins-text">A interface visual eliminou a barreira de entrada da criação com IA. Participantes sem experiência prévia geraram prompts em nível editorial em minutos.</div></div>
+      <div class="ins"><div class="ins-title">10 estilos utilizados</div><div class="ins-text">Das 10 opções disponíveis, todas foram escolhidas ao menos uma vez. Avant-garde, boho chic e romântico etéreo lideraram, mas a dispersão mostra variedade real de repertório.</div></div>
+      <div class="ins"><div class="ins-title">Diversidade nas escolhas</div><div class="ins-text">67% das escolhas de representação fogem do padrão algorítmico dominante. A diversidade apareceu sem instrução, apenas pela possibilidade de escolha consciente.</div></div>
+      <div class="ins"><div class="ins-title">Vestido longo lidera</div><div class="ins-text">O vestido longo foi o produto mais escolhido, com 18 ocorrências. Os participantes se inclinaram a experiências mais editoriais e aspiracionais.</div></div>
+      <div class="ins"><div class="ins-title">Liberdade como sensação dominante</div><div class="ins-text">Com 15 escolhas, liberdade foi a sensação mais desejada nas imagens, seguida de felicidade e fantasia. Um dado que reflete o estado emocional do público presente.</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="f-inner">
+      <div><div class="f-brand">OURSPACE</div><div class="f-sub">Michelle Douglas · @mispace · ourspace.com.br</div></div>
+      <div class="f-meta"><div>RELATÓRIO INTERNO · SENAC CÁPSULA RJ</div><div>ABRIL 2026 · CONFIDENCIAL</div></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const C = ['rgba(165,200,59,.78)','rgba(165,200,59,.52)','rgba(165,200,59,.36)','rgba(165,200,59,.22)','rgba(184,192,204,.38)','rgba(184,192,204,.22)','rgba(184,192,204,.14)','rgba(184,192,204,.09)'];
+const TT = {backgroundColor:'rgba(14,17,23,.95)',titleColor:'#faf8f5',bodyColor:'#8891a0',borderColor:'rgba(184,192,204,.12)',borderWidth:1,cornerRadius:8,padding:12};
+
+function pie(id,legId,labels,data){
+  const total=data.reduce((a,b)=>a+b,0);
+  new Chart(document.getElementById(id),{
+    type:'doughnut',
+    data:{labels,datasets:[{data,backgroundColor:C.slice(0,data.length),borderColor:'rgba(14,17,23,.8)',borderWidth:2,hoverOffset:6}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{display:false},tooltip:{...TT,callbacks:{label:ctx=>{const p=Math.round(ctx.parsed/total*100);return ` ${ctx.label}: ${ctx.parsed} (${p}%)`;}}}}
+    }
+  });
+  const el=document.getElementById(legId);
+  labels.forEach((l,i)=>{
+    const p=Math.round(data[i]/total*100);
+    el.innerHTML+=`<div class="leg-item"><div class="leg-dot" style="background:${C[i]}"></div>${l} <span style="color:#d4cfc6;margin-left:2px;">${p}%</span></div>`;
+  });
+}
+
+pie('c-modelo','leg-modelo',['Mulher Branca','Mulher Negra','Mulher Asiática','Personagem Alien','Mulher Albina','Homens'],[19,13,11,7,4,4]);
+pie('c-produto','leg-produto',['Vestido longo','Calça, blusa e jaqueta','Jaqueta e shorts','Vestido curto','Macacão','Outros'],[18,8,7,6,4,15]);
+pie('c-estilo','leg-estilo',['Avant-garde','Boho chic','Romântico etéreo','Esportivo','Futurista tech','Outros'],[12,11,11,6,5,13]);
+pie('c-cor','leg-cor',['Tons vibrantes','Tons pastéis','Tons terrosos','Neutros frios','Metálicos','Outros'],[19,8,8,7,5,11]);
+pie('c-locacao','leg-locacao',['Passarela','Jardim florido','Rooftop','Galeria de arte','Grafitti','Outros'],[13,12,8,7,5,13]);
+pie('c-sensacao','leg-sensacao',['Liberdade','Felicidade','Fantasia','Glamour','Rebeldia','Outros'],[15,10,8,6,6,13]);
+</script>
+</body>
+</html>
