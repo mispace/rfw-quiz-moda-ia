@@ -1,0 +1,16 @@
+{
+  "name": "assistente-whatsapp",
+  "version": "0.1.0",
+  "description": "Assistente pessoal (WhatsApp + Claude + Trello). Fase 1: o cérebro, testável por terminal.",
+  "type": "module",
+  "scripts": {
+    "simular": "node scripts/simular.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
